@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 <title>VM Digital Depot</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 font-sans">
 
 <!-- NAVBAR -->
@@ -19,13 +21,17 @@
       </div>
     </div>
 
-    <div class="text-sm text-gray-500 hidden md:block">Curated Amazon Trending Products</div>
+    <div class="flex items-center gap-6">
+      <div class="text-sm text-gray-500 hidden md:block">Curated Amazon Trending Products</div>
+
+      <!-- ADMIN ICON -->
+      <button onclick="openLogin()" class="text-xl">⚙️</button>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-
 <div>
 <h1 class="text-4xl font-bold mb-4">Discover Trending Products</h1>
 <p class="text-gray-600 mb-6">
@@ -40,7 +46,6 @@ VM Digital Depot curates trending Amazon products. Browse our catalog and click 
 <img src="https://images.unsplash.com/photo-1609081592054-1c5f1cfdc0b7" class="rounded-xl shadow h-40 w-full object-cover">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="rounded-xl shadow h-40 w-full object-cover">
 </div>
-
 </section>
 
 <!-- SEARCH -->
@@ -50,10 +55,41 @@ VM Digital Depot curates trending Amazon products. Browse our catalog and click 
 
 <!-- PRODUCTS -->
 <section id="products" class="max-w-7xl mx-auto px-6 pb-16">
-
 <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
 </section>
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="loginModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center">
+<div class="bg-white p-6 rounded-xl w-80">
+<h2 class="text-xl font-bold mb-4">Admin Login</h2>
+<input id="username" placeholder="User" class="border p-2 w-full mb-2">
+<input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
+<button onclick="login()" class="bg-black text-white px-4 py-2 rounded w-full">Login</button>
+</div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="fixed inset-0 bg-black/60 hidden overflow-auto">
+<div class="bg-white max-w-3xl mx-auto mt-10 p-6 rounded-xl">
+
+<div class="flex justify-between mb-6">
+<h2 class="text-2xl font-bold">Admin Panel</h2>
+<button onclick="closeAdmin()">❌</button>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<input id="pname" placeholder="Product Name" class="border p-2">
+<input id="pprice" placeholder="Price" class="border p-2">
+<input id="prating" placeholder="Rating" class="border p-2">
+<input id="plink" placeholder="Amazon Link" class="border p-2">
+<input id="pimage" type="file" class="border p-2 md:col-span-2">
+<button onclick="addProduct()" class="bg-black text-white p-2 rounded md:col-span-2">Add Product</button>
+</div>
+
+<div id="adminList"></div>
+
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer class="border-t bg-white">
@@ -65,33 +101,15 @@ VM Digital Depot curates trending Amazon products. Browse our catalog and click 
 
 <script>
 
-const products = [
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "Mostro2025!!";
+
+let products = JSON.parse(localStorage.getItem("products")) || [
 {
 name:"Wireless Bluetooth Earbuds",
 price:"$29.99",
 rating:"4.5⭐",
 image:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-link:"https://amazon.com"
-},
-{
-name:"LED Desk Lamp",
-price:"$24.99",
-rating:"4.6⭐",
-image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
-link:"https://amazon.com"
-},
-{
-name:"Portable Phone Stand",
-price:"$14.99",
-rating:"4.4⭐",
-image:"https://images.unsplash.com/photo-1609081592054-1c5f1cfdc0b7",
-link:"https://amazon.com"
-},
-{
-name:"Mechanical Keyboard",
-price:"$79.99",
-rating:"4.7⭐",
-image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
 link:"https://amazon.com"
 }
 ];
@@ -99,13 +117,17 @@ link:"https://amazon.com"
 const grid = document.getElementById("productGrid");
 const search = document.getElementById("search");
 
+function save(){
+localStorage.setItem("products", JSON.stringify(products));
+}
+
 function render(list){
 
 grid.innerHTML="";
 
-list.forEach(p=>{
+list.forEach((p,i)=>{
 
-const card = document.createElement("div");
+const card=document.createElement("div");
 card.className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4";
 
 card.innerHTML=`
@@ -119,17 +141,112 @@ card.innerHTML=`
 grid.appendChild(card);
 
 });
+
 }
 
 search.addEventListener("input",e=>{
 
 const value=e.target.value.toLowerCase();
-
-const filtered = products.filter(p=>p.name.toLowerCase().includes(value));
-
+const filtered=products.filter(p=>p.name.toLowerCase().includes(value));
 render(filtered);
 
 });
+
+function openLogin(){
+document.getElementById("loginModal").classList.remove("hidden");
+}
+
+function login(){
+
+const u=document.getElementById("username").value;
+const p=document.getElementById("password").value;
+
+if(u===ADMIN_USER && p===ADMIN_PASS){
+
+document.getElementById("loginModal").classList.add("hidden");
+document.getElementById("adminPanel").classList.remove("hidden");
+renderAdmin();
+
+}else{
+alert("Invalid login");
+}
+
+}
+
+function closeAdmin(){
+document.getElementById("adminPanel").classList.add("hidden");
+}
+
+function addProduct(){
+
+const name=document.getElementById("pname").value;
+const price=document.getElementById("pprice").value;
+const rating=document.getElementById("prating").value;
+const link=document.getElementById("plink").value;
+const file=document.getElementById("pimage").files[0];
+
+if(!file){ alert("Upload image"); return; }
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+products.push({
+name,
+price,
+rating,
+link,
+image:e.target.result
+});
+
+save();
+render(products);
+renderAdmin();
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+function deleteProduct(i){
+
+if(confirm("Delete product?")){
+products.splice(i,1);
+save();
+render(products);
+renderAdmin();
+}
+
+}
+
+function renderAdmin(){
+
+const list=document.getElementById("adminList");
+list.innerHTML="";
+
+products.forEach((p,i)=>{
+
+const div=document.createElement("div");
+
+div.className="border p-3 mb-2 flex justify-between items-center";
+
+div.innerHTML=`
+<div class="flex items-center gap-3">
+<img src="${p.image}" class="w-12 h-12 object-cover rounded">
+<div>
+<div class="font-semibold">${p.name}</div>
+<div class="text-xs text-gray-500">${p.price}</div>
+</div>
+</div>
+<button onclick="deleteProduct(${i})" class="text-red-600">Delete</button>
+`;
+
+list.appendChild(div);
+
+});
+
+}
 
 render(products);
 
