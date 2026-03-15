@@ -1,259 +1,174 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VM Digital Depot</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<title>VM Digital Depot | Distribuidor Grocery para Amazon México</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif;margin:0;background:#f6f7fb;color:#222}
+header{background:#0f172a;color:#fff;padding:18px 40px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:22px;font-weight:700}
+nav a{color:#fff;margin-left:20px;text-decoration:none;font-weight:500}
+.hero{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:110px 30px;text-align:center}
+.hero h2{font-size:44px;margin-bottom:20px}
+.hero p{font-size:18px;max-width:700px;margin:auto;margin-bottom:30px}
+.btn{background:#ff9900;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block}
+.section{padding:70px 30px;background:#fff}
+.section.gray{background:#f1f5f9}
+.container{max-width:1150px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
+.card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08);text-align:center}
+.card img{max-width:100%;height:140px;object-fit:contain;margin-bottom:10px}
+.card h3{margin:10px 0}
+.categories div{background:#fff;padding:30px;border-radius:12px;text-align:center;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.about{max-width:800px;margin:auto;text-align:center}
+footer{background:#0f172a;color:#fff;padding:45px 20px;text-align:center}
+footer a{color:#ff9900;text-decoration:none}
+.contact-box{font-size:17px;line-height:28px}
+.badges{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:30px}
+.badge{background:white;padding:12px 20px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.07)}
+</style>
 </head>
+<body>
 
-<body class="bg-gray-50 font-sans">
-
-<!-- NAVBAR -->
-<nav class="border-b bg-white">
-  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-2xl bg-black text-white flex items-center justify-center font-bold text-sm">VM</div>
-      <div class="leading-tight">
-        <div class="text-xl font-bold">VM Digital Depot</div>
-        <div class="text-xs text-gray-500">Trending Products & Digital Deals</div>
-      </div>
-    </div>
-
-    <div class="flex items-center gap-6">
-      <div class="text-sm text-gray-500 hidden md:block">Curated Amazon Trending Products</div>
-
-      <!-- ADMIN ICON -->
-      <button onclick="openLogin()" class="text-xl">⚙️</button>
-    </div>
-  </div>
+<header>
+<h1>VM Digital Depot</h1>
+<nav>
+<a href="#productos">Productos</a>
+<a href="#categorias">Categorías</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#contacto">Contacto</a>
 </nav>
+</header>
 
-<!-- HERO -->
-<section class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-<div>
-<h1 class="text-4xl font-bold mb-4">Discover Trending Products</h1>
-<p class="text-gray-600 mb-6">
-VM Digital Depot curates trending Amazon products. Browse our catalog and click any item to view it directly on Amazon.
+<section class="hero">
+<h2>Distribuidor Grocery para Amazon México</h2>
+<p>En VM Digital Depot seleccionamos productos de grocery de alta demanda y los distribuimos a través de Amazon México utilizando su red logística para entregas rápidas y seguras.</p>
+<a class="btn" href="#productos">Ver Productos Populares</a>
+</section>
+
+<section class="section" id="productos">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:40px">Productos Destacados</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Salsa_Valentina.jpg">
+<h3>Salsa Valentina</h3>
+<p>Salsa picante mexicana muy popular en Amazon México.</p>
+<a class="btn" href="#" target="_blank">Comprar en Amazon</a>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tapatio_hot_sauce.jpg">
+<h3>Salsa Tapatío</h3>
+<p>Salsa picante reconocida internacionalmente con alta demanda.</p>
+<a class="btn" href="#" target="_blank">Comprar en Amazon</a>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
+<h3>Snacks y Botanas</h3>
+<p>Productos populares de grocery ideales para venta online.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3081/3081967.png">
+<h3>Chocolates</h3>
+<p>Chocolates y dulces con alta rotación en marketplace.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section gray" id="categorias">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:40px">Categorías Grocery</h2>
+
+<div class="grid categories">
+<div>🌶️ Salsas</div>
+<div>🍫 Chocolates</div>
+<div>🍪 Snacks</div>
+<div>🥜 Botanas</div>
+<div>🥤 Bebidas</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="nosotros">
+<div class="container">
+<div class="about">
+<h2>Sobre VM Digital Depot</h2>
+
+<p>
+VM Digital Depot es una tienda especializada en la distribución de productos grocery de alta demanda para el marketplace de Amazon México. Nuestro objetivo es conectar productos populares con clientes de todo el país utilizando la infraestructura logística de Amazon.
 </p>
-<a href="#products" class="bg-black text-white px-6 py-3 rounded-lg">Browse Products</a>
+
+<p>
+Seleccionamos productos con alta rotación en el mercado, garantizando autenticidad, disponibilidad y entregas rápidas.
+</p>
+
 </div>
 
-<div class="grid grid-cols-2 gap-4">
-<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad" class="rounded-xl shadow h-40 w-full object-cover">
-<img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c" class="rounded-xl shadow h-40 w-full object-cover">
-<img src="https://images.unsplash.com/photo-1609081592054-1c5f1cfdc0b7" class="rounded-xl shadow h-40 w-full object-cover">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="rounded-xl shadow h-40 w-full object-cover">
+<div class="badges">
+<div class="badge">✔ Productos originales</div>
+<div class="badge">✔ Alta demanda en Amazon</div>
+<div class="badge">✔ Logística rápida</div>
+<div class="badge">✔ Marketplace confiable</div>
+</div>
+
 </div>
 </section>
 
-<!-- SEARCH -->
-<section class="max-w-7xl mx-auto px-6 mb-8">
-<input id="search" placeholder="Search products..." class="border rounded-lg p-3 w-full max-w-md">
+<section class="section gray">
+<div class="container">
+<h2 style="text-align:center">¿Cómo funciona?</h2>
+
+<div class="grid" style="margin-top:40px">
+
+<div class="card">
+<h3>1. Selección de productos</h3>
+<p>Analizamos productos grocery con alta demanda en Amazon.</p>
+</div>
+
+<div class="card">
+<h3>2. Distribución</h3>
+<p>Los productos se venden a través de nuestra tienda en Amazon.</p>
+</div>
+
+<div class="card">
+<h3>3. Entrega rápida</h3>
+<p>Amazon gestiona envíos rápidos y seguros a todo México.</p>
+</div>
+
+</div>
+</div>
 </section>
 
-<!-- PRODUCTS -->
-<section id="products" class="max-w-7xl mx-auto px-6 pb-16">
-<div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+<section class="section" id="contacto">
+<div class="container" style="text-align:center">
+<h2>Contacto</h2>
+
+<div class="contact-box">
+📧 Email: ventaamazon976@gmail.com <br>
+📱 Teléfono / WhatsApp: 6863501600
+</div>
+
+<p style="margin-top:20px">Para comprar nuestros productos visita nuestra tienda en Amazon.</p>
+
+<a class="btn" href="#" target="_blank">Visitar Tienda en Amazon</a>
+
+</div>
 </section>
 
-<!-- ADMIN LOGIN MODAL -->
-<div id="loginModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center">
-<div class="bg-white p-6 rounded-xl w-80">
-<h2 class="text-xl font-bold mb-4">Admin Login</h2>
-<input id="username" placeholder="User" class="border p-2 w-full mb-2">
-<input id="password" type="password" placeholder="Password" class="border p-2 w-full mb-4">
-<button onclick="login()" class="bg-black text-white px-4 py-2 rounded w-full">Login</button>
-</div>
-</div>
-
-<!-- ADMIN PANEL -->
-<div id="adminPanel" class="fixed inset-0 bg-black/60 hidden overflow-auto">
-<div class="bg-white max-w-3xl mx-auto mt-10 p-6 rounded-xl">
-
-<div class="flex justify-between mb-6">
-<h2 class="text-2xl font-bold">Admin Panel</h2>
-<button onclick="closeAdmin()">❌</button>
-</div>
-
-<div class="grid md:grid-cols-2 gap-4 mb-6">
-<input id="pname" placeholder="Product Name" class="border p-2">
-<input id="pprice" placeholder="Price" class="border p-2">
-<input id="prating" placeholder="Rating" class="border p-2">
-<input id="plink" placeholder="Amazon Link" class="border p-2">
-<input id="pimage" type="file" class="border p-2 md:col-span-2">
-<button onclick="addProduct()" class="bg-black text-white p-2 rounded md:col-span-2">Add Product</button>
-</div>
-
-<div id="adminList"></div>
-
-</div>
-</div>
-
-<!-- FOOTER -->
-<footer class="border-t bg-white">
-<div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500 flex flex-col md:flex-row justify-between">
-<div>© <span id="year"></span> VM Digital Depot</div>
-<div>Trending product catalog connected to Amazon listings.</div>
-</div>
+<footer>
+<p>© 2026 VM Digital Depot</p>
+<p><a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
 </footer>
-
-<script>
-
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "Mostro2025!!";
-
-let products = JSON.parse(localStorage.getItem("products")) || [
-{
-name:"Wireless Bluetooth Earbuds",
-price:"$29.99",
-rating:"4.5⭐",
-image:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-link:"https://amazon.com"
-}
-];
-
-const grid = document.getElementById("productGrid");
-const search = document.getElementById("search");
-
-function save(){
-localStorage.setItem("products", JSON.stringify(products));
-}
-
-function render(list){
-
-grid.innerHTML="";
-
-list.forEach((p,i)=>{
-
-const card=document.createElement("div");
-card.className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4";
-
-card.innerHTML=`
-<img src="${p.image}" class="h-52 w-full object-cover rounded-xl mb-4"/>
-<div class="flex justify-between mb-2"><span class="text-sm">${p.rating}</span></div>
-<h3 class="font-semibold text-lg">${p.name}</h3>
-<p class="text-gray-600 mb-4">${p.price}</p>
-<a href="${p.link}" target="_blank" class="block text-center bg-black text-white py-2 rounded-lg">View on Amazon</a>
-`;
-
-grid.appendChild(card);
-
-});
-
-}
-
-search.addEventListener("input",e=>{
-
-const value=e.target.value.toLowerCase();
-const filtered=products.filter(p=>p.name.toLowerCase().includes(value));
-render(filtered);
-
-});
-
-function openLogin(){
-document.getElementById("loginModal").classList.remove("hidden");
-}
-
-function login(){
-
-const u=document.getElementById("username").value;
-const p=document.getElementById("password").value;
-
-if(u===ADMIN_USER && p===ADMIN_PASS){
-
-document.getElementById("loginModal").classList.add("hidden");
-document.getElementById("adminPanel").classList.remove("hidden");
-renderAdmin();
-
-}else{
-alert("Invalid login");
-}
-
-}
-
-function closeAdmin(){
-document.getElementById("adminPanel").classList.add("hidden");
-}
-
-function addProduct(){
-
-const name=document.getElementById("pname").value;
-const price=document.getElementById("pprice").value;
-const rating=document.getElementById("prating").value;
-const link=document.getElementById("plink").value;
-const file=document.getElementById("pimage").files[0];
-
-if(!file){ alert("Upload image"); return; }
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-products.push({
-name,
-price,
-rating,
-link,
-image:e.target.result
-});
-
-save();
-render(products);
-renderAdmin();
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-function deleteProduct(i){
-
-if(confirm("Delete product?")){
-products.splice(i,1);
-save();
-render(products);
-renderAdmin();
-}
-
-}
-
-function renderAdmin(){
-
-const list=document.getElementById("adminList");
-list.innerHTML="";
-
-products.forEach((p,i)=>{
-
-const div=document.createElement("div");
-
-div.className="border p-3 mb-2 flex justify-between items-center";
-
-div.innerHTML=`
-<div class="flex items-center gap-3">
-<img src="${p.image}" class="w-12 h-12 object-cover rounded">
-<div>
-<div class="font-semibold">${p.name}</div>
-<div class="text-xs text-gray-500">${p.price}</div>
-</div>
-</div>
-<button onclick="deleteProduct(${i})" class="text-red-600">Delete</button>
-`;
-
-list.appendChild(div);
-
-});
-
-}
-
-render(products);
-
-document.getElementById("year").textContent=new Date().getFullYear();
-
-</script>
 
 </body>
 </html>
